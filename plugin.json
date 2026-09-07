@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "justonce",
   "version": "1.0.1",
-  "description": "JustOnce: persistent memory for AI coding assistants over MCP. Remembers your projects, stack, conventions, decisions and preferences across Cursor, Claude, ChatGPT, VS Code, Claude Code and any MCP client. Stores documents, keeps a bitemporal history of what was true and when, and shares memories with teams, clients and family through shared spaces with owner, editor and viewer roles.",
+  "description": "JustOnce: persistent memory for AI coding assistants over MCP. Remembers your projects, stack, conventions, decisions and preferences across Cursor, Claude, ChatGPT, VS Code, Claude Code and any MCP client. Stores documents, keeps a bitemporal history of what was true and when, and lets teams and client engagements share memories through shared spaces. Owner, editor and viewer roles control who can change what.",
   "author": {
     "name": "Bluesoul Technology",
     "url": "https://justonce.ai"
