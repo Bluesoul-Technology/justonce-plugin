@@ -8,7 +8,7 @@ It does three things:
 
 - **Memories** — facts, decisions and preferences the assistant stores and recalls across sessions and tools (`add_memory`, `search_memories`, `get_context`).
 - **Documents** — specs, READMEs, config and PDFs stored alongside memories so the assistant can fetch them back into context when needed (`store_document`, `fetch_document`).
-- **Shared spaces** — a team or a client engagement shares memories, and every member's own assistant can use them. Owner, editor and viewer roles control who can change what (`open_shared_space`, `add_memories_to_space`).
+- **Shared spaces** — a team or a client engagement shares memories, and every member's own assistant can use them. Owner, editor and viewer roles control who can change what (`open_shared_space`, `share_memories`).
 
 It is one vault, not one per app: the same memory follows you across assistants, and through shared spaces it follows your team, clients and contractors too — each with their own assistant, each seeing only what was shared with them.
 
@@ -59,9 +59,9 @@ Once connected, the assistant can:
 - **Remember** — `add_memory`, `update_memory`, `forget_memory`, `import_memories`
 - **Recall** — `search_memories`, `get_context`, `get_core_profile`, `get_memory`
 - **Travel in time** — `get_as_of`, `get_memory_history` (bitemporal: what was true, and when you knew it)
-- **Walk the graph** — `get_relationships`, `find_related_entities`, `explore_connections`, `get_entity_confidence`
+- **Walk the graph** — `get_relationships` (flat edges, or a multi-hop walk with `depth`), `find_related_entities` (list entities, or verify one value with `name`)
 - **Files & documents** — `store_document`, `fetch_document`, `request_upload_link`
-- **Shared spaces** — `list_shared_spaces`, `open_shared_space`, `close_shared_space`, `list_space_memories`, `add_memories_to_space`, `remove_memories_from_space`
+- **Shared spaces** — `list_shared_spaces`, `open_shared_space`, `close_shared_space`, `list_space_memories`, `share_memories` (`action` share / unshare)
 
 Every tool carries `readOnlyHint` / `destructiveHint` annotations so clients can ask before anything is changed or erased. `forget_memory` is permanent.
 
