@@ -1,7 +1,7 @@
 {
   "name": "justonce",
   "displayName": "JustOnce",
-  "description": "Persistent, bitemporal memory for AI assistants. Remembers your preferences, people, projects and decisions across every session and every tool.",
+  "description": "Persistent, shareable memory for AI assistants. Remembers your preferences, people, projects and decisions across every session and every tool, and shares chosen memories with family, teams and clients through shared spaces.",
   "version": "1.0.0",
   "author": {
     "name": "Bluesoul Technology",

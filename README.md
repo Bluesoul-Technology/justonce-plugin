@@ -2,7 +2,9 @@
 
 <p align="center"><img src="assets/icon.png" width="96" alt="JustOnce"></p>
 
-**JustOnce** is a persistent, bitemporal memory layer for AI assistants. Tell it something once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — can recall it later, with a full history of what was true and when.
+**JustOnce** is a persistent, **shareable** memory layer for AI assistants, delivered over MCP. Tell it something once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — can recall it later, with a full bitemporal history of what was true and when.
+
+It is one vault, not one per app: the same memory follows you across assistants, and through **shared spaces** it follows your partner, family, team, clients and contractors too — each with their own assistant, each seeing only what was shared with them.
 
 This repository is the public **MCP plugin manifest** for the hosted JustOnce server. The server itself runs at `https://mcp.justonce.ai/`. There is nothing to build or self-host: install the plugin, sign in, done.
 
@@ -53,9 +55,20 @@ Once connected, the assistant can:
 - **Travel in time** — `get_as_of`, `get_memory_history` (bitemporal: what was true, and when you knew it)
 - **Walk the graph** — `get_relationships`, `find_related_entities`, `explore_connections`, `get_entity_confidence`
 - **Files & documents** — `store_document`, `fetch_document`, `request_upload_link`
-- **Shared spaces** — `list_shared_spaces`, `open_shared_space`, `list_space_memories`, `add_memories_to_space`
+- **Shared spaces** — `list_shared_spaces`, `open_shared_space`, `close_shared_space`, `list_space_memories`, `add_memories_to_space`, `remove_memories_from_space`
 
 Every tool carries `readOnlyHint` / `destructiveHint` annotations so clients can ask before anything is changed or erased. `forget_memory` is permanent.
+
+## Shared spaces — a memory layer you can share
+
+Your personal vault is private and is never shared. A **shared space** is a separate container you choose to put specific memories and documents into, and invite people to:
+
+- **One space per relationship.** A household space, a team space, a space per client or engagement. Separate spaces mean separate memberships — no cross-client bleed, no over-sharing.
+- **Three roles, nothing to configure.** Owner, Editor and Viewer.
+- **Works across assistants.** Members connect whichever MCP client they like. When someone asks their assistant a question, `search_memories` also returns hits from the shared spaces they belong to, each carrying a `shared` block that says which space it came from and who shared it — so the assistant attributes it correctly instead of presenting it as the user's own.
+- **Owner stays in control.** Shared memories are read-only to everyone but the person who created them; only they can change or erase them. Remove a memory from a space, or close the space, and it stops being visible to the other members.
+
+Typical uses: a family keeping the household's dates, sizes and contacts in one place every assistant can reach; a team giving every member's AI the same project context; a contractor or agency holding a client's preferences in a space that is closed when the engagement ends.
 
 ## Data & privacy
 
