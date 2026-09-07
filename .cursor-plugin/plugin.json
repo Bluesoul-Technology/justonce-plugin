@@ -1,8 +1,8 @@
 {
   "name": "justonce",
   "displayName": "JustOnce",
-  "description": "Persistent, shareable memory for AI assistants. Remembers your preferences, people, projects and decisions across every session and every tool, and shares chosen memories with family, teams and clients through shared spaces.",
-  "version": "1.0.0",
+  "description": "Persistent memory for Cursor and every other MCP client. JustOnce remembers your projects, stack, conventions, decisions and preferences once and recalls them in every session and every tool. Store documents (specs, READMEs, config, PDFs) and fetch them back into context when needed. Bitemporal history shows what was true and when. Shared spaces give a team, client or family one memory their own assistants can read, with owner, editor and viewer roles.",
+  "version": "1.0.1",
   "author": {
     "name": "Bluesoul Technology",
     "url": "https://justonce.ai"
@@ -14,7 +14,11 @@
     "memory",
     "mcp",
     "context",
-    "recall"
+    "recall",
+    "documents",
+    "shared-spaces",
+    "team-memory",
+    "bitemporal"
   ],
   "mcpServers": "mcp.json",
   "logo": "assets/avatar.png",
@@ -23,6 +27,8 @@
     "memory",
     "mcp",
     "context",
-    "sharing"
+    "documents",
+    "sharing",
+    "teams"
   ]
 }
