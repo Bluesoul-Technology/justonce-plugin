@@ -1,6 +1,6 @@
 # JustOnce — memory for your AI assistants
 
-<p align="center"><img src="assets/icon.png" width="96" alt="JustOnce"></p>
+<p align="center"><img src="assets/icon.png" width="128" alt="JustOnce"></p>
 
 **JustOnce** is a persistent, **shareable** memory layer for AI assistants, delivered over MCP. Tell it something once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — can recall it later, with a full bitemporal history of what was true and when.
 

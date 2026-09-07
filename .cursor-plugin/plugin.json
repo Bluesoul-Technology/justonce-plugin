@@ -10,6 +10,19 @@
   "homepage": "https://justonce.ai/connect",
   "repository": "https://github.com/Bluesoul-Technology/justonce-plugin",
   "license": "MIT",
-  "keywords": ["memory", "mcp", "context", "recall"],
-  "mcpServers": "mcp.json"
+  "keywords": [
+    "memory",
+    "mcp",
+    "context",
+    "recall"
+  ],
+  "mcpServers": "mcp.json",
+  "logo": "assets/avatar.png",
+  "category": "developer-tools",
+  "tags": [
+    "memory",
+    "mcp",
+    "context",
+    "sharing"
+  ]
 }
