@@ -8,9 +8,9 @@ It does three things:
 
 - **Memories** — facts, decisions and preferences the assistant stores and recalls across sessions and tools (`add_memory`, `search_memories`, `get_context`).
 - **Documents** — specs, READMEs, config and PDFs stored alongside memories so the assistant can fetch them back into context when needed (`store_document`, `fetch_document`).
-- **Shared spaces** — a team, client or family gets one memory their own assistants can read, with owner, editor and viewer roles (`open_shared_space`, `add_memories_to_space`).
+- **Shared spaces** — a team or a client engagement shares memories, and every member's own assistant can use them. Owner, editor and viewer roles control who can change what (`open_shared_space`, `add_memories_to_space`).
 
-It is one vault, not one per app: the same memory follows you across assistants, and through shared spaces it follows your team, clients, contractors and family too — each with their own assistant, each seeing only what was shared with them.
+It is one vault, not one per app: the same memory follows you across assistants, and through shared spaces it follows your team, clients and contractors too — each with their own assistant, each seeing only what was shared with them.
 
 This repository is the public **MCP plugin manifest** for the hosted JustOnce server. The server itself runs at `https://mcp.justonce.ai/`. There is nothing to build or self-host: install the plugin, sign in, done.
 
@@ -69,12 +69,12 @@ Every tool carries `readOnlyHint` / `destructiveHint` annotations so clients can
 
 Your personal vault is private and is never shared. A **shared space** is a separate container you choose to put specific memories and documents into, and invite people to:
 
-- **One space per relationship.** A household space, a team space, a space per client or engagement. Separate spaces mean separate memberships — no cross-client bleed, no over-sharing.
+- **One space per relationship.** A team space, a space per client or engagement, a space per open-source project. Separate spaces mean separate memberships — no cross-client bleed, no over-sharing.
 - **Three roles, nothing to configure.** Owner, Editor and Viewer.
 - **Works across assistants.** Members connect whichever MCP client they like. When someone asks their assistant a question, `search_memories` also returns hits from the shared spaces they belong to, each carrying a `shared` block that says which space it came from and who shared it — so the assistant attributes it correctly instead of presenting it as the user's own.
-- **Owner stays in control.** Shared memories are read-only to everyone but the person who created them; only they can change or erase them. Remove a memory from a space, or close the space, and it stops being visible to the other members.
+- **Roles decide who edits.** Owners and Editors can change a shared memory; Viewers can only read it. Remove a memory from a space, or close the space, and it stops being visible to the other members.
 
-Typical uses: a family keeping the household's dates, sizes and contacts in one place every assistant can reach; a team giving every member's AI the same project context; a contractor or agency holding a client's preferences in a space that is closed when the engagement ends.
+Typical uses: a team giving every member's AI the same architecture decisions, conventions and runbooks; a contractor or agency holding a client's stack and preferences in a space that is closed when the engagement ends; a maintainer sharing project context with contributors without exposing anything personal.
 
 ## Data & privacy
 
