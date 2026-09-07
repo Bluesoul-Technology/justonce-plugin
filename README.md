@@ -2,9 +2,15 @@
 
 <p align="center"><img src="assets/icon.png" width="128" alt="JustOnce"></p>
 
-**JustOnce** is a persistent, **shareable** memory layer for AI assistants, delivered over MCP. Tell it something once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — can recall it later, with a full bitemporal history of what was true and when.
+**JustOnce** is a persistent memory layer for AI coding assistants, delivered over MCP. Tell it your stack, conventions, project decisions and preferences once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — recalls them in every later session, with a full bitemporal history of what was true and when.
 
-It is one vault, not one per app: the same memory follows you across assistants, and through **shared spaces** it follows your partner, family, team, clients and contractors too — each with their own assistant, each seeing only what was shared with them.
+It does three things:
+
+- **Memories** — facts, decisions and preferences the assistant stores and recalls across sessions and tools (`add_memory`, `search_memories`, `get_context`).
+- **Documents** — specs, READMEs, config and PDFs stored alongside memories so the assistant can fetch them back into context when needed (`store_document`, `fetch_document`).
+- **Shared spaces** — a team, client or family gets one memory their own assistants can read, with owner, editor and viewer roles (`open_shared_space`, `add_memories_to_space`).
+
+It is one vault, not one per app: the same memory follows you across assistants, and through shared spaces it follows your team, clients, contractors and family too — each with their own assistant, each seeing only what was shared with them.
 
 This repository is the public **MCP plugin manifest** for the hosted JustOnce server. The server itself runs at `https://mcp.justonce.ai/`. There is nothing to build or self-host: install the plugin, sign in, done.
 
