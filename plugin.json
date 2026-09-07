@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "justonce",
+  "version": "1.0.0",
+  "description": "JustOnce — persistent, bitemporal memory for AI assistants. Connects Cursor, Claude, ChatGPT, VS Code and any MCP client to your JustOnce memory vault.",
+  "author": {
+    "name": "Bluesoul Technology",
+    "url": "https://justonce.ai"
+  },
+  "homepage": "https://justonce.ai/connect",
+  "repository": "https://github.com/Bluesoul-Technology/justonce-plugin",
+  "license": "MIT",
+  "keywords": ["memory", "mcp", "context", "recall", "bitemporal", "justonce"]
+}

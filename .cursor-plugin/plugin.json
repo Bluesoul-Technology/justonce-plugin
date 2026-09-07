@@ -1,0 +1,15 @@
+{
+  "name": "justonce",
+  "displayName": "JustOnce",
+  "description": "Persistent, bitemporal memory for AI assistants. Remembers your preferences, people, projects and decisions across every session and every tool.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Bluesoul Technology",
+    "url": "https://justonce.ai"
+  },
+  "homepage": "https://justonce.ai/connect",
+  "repository": "https://github.com/Bluesoul-Technology/justonce-plugin",
+  "license": "MIT",
+  "keywords": ["memory", "mcp", "context", "recall"],
+  "mcpServers": "mcp.json"
+}
