@@ -52,10 +52,10 @@
               "expected_behavior": "ChatGPT calls search_memories and answers that the user prefers a window seat and flies Alaska Airlines whenever they can, based on the stored memory."
             },
             {
-              "description": "Recalls several facts about one topic",
-              "prompt": "What do you know about my dog?",
+              "description": "Recalls a fact about the user's work",
+              "prompt": "Where do I work, and what do I do there?",
               "tools_triggered": "search_memories",
-              "expected_behavior": "ChatGPT calls search_memories and answers that the dog is a beagle called Biscuit whose vet is Riverside Animal Clinic."
+              "expected_behavior": "ChatGPT calls search_memories and answers that the user is a product designer at Northwind Studio, working mostly on its mobile app."
             },
             {
               "description": "Saves a new durable fact after the user confirms",
