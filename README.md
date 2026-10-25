@@ -2,12 +2,12 @@
 
 <p align="center"><img src="assets/icon.png" width="128" alt="JustOnce"></p>
 
-**JustOnce** is a persistent memory layer for AI coding assistants, delivered over MCP. Tell it your stack, conventions, project decisions and preferences once and every tool you use — Cursor, Claude, ChatGPT, VS Code, Claude Code and any other MCP client — recalls them in every later session, with a full bitemporal history of what was true and when.
+**JustOnce** is the shared memory for the AIs you use, delivered over MCP. Tell it your projects, decisions, preferences and documents once and the assistants you connect — Claude (claude.ai, Claude Desktop and Claude Code), ChatGPT and Cursor — recall them in every later session, with a bitemporal history of what was true and when.
 
 It does three things:
 
 - **Memories** — facts, decisions and preferences the assistant stores and recalls across sessions and tools (`add_memory`, `search_memories`, `get_context`).
-- **Documents** — specs, READMEs, config and PDFs stored alongside memories so the assistant can fetch them back into context when needed (`store_document`, `fetch_document`).
+- **Documents** — specs, READMEs, config and PDFs stored alongside the memories distilled from them (`store_document`, `request_upload_link`); open them in the web app, or fetch one by id (`fetch_document`).
 - **Shared spaces** — a team or a client engagement shares memories, and every member's own assistant can use them. Owner, editor and viewer roles control who can change what (`open_shared_space`, `share_memories`).
 
 It is one vault, not one per app: the same memory follows you across assistants, and through shared spaces it follows your team, clients and contractors too — each with their own assistant, each seeing only what was shared with them.
@@ -24,11 +24,9 @@ This repository is the public **MCP plugin manifest** for the hosted JustOnce se
 | Client | How |
 | --- | --- |
 | **Cursor** | [![Add to Cursor](https://img.shields.io/badge/Add_to-Cursor-black?logo=cursor)](cursor://anysphere.cursor-deeplink/mcp/install?name=justonce&config=eyJ1cmwiOiJodHRwczovL21jcC5qdXN0b25jZS5haS8ifQ==) — or paste the JSON below into `~/.cursor/mcp.json` |
-| **Claude.ai / Claude Desktop** | Settings → Connectors → *Add custom connector* → URL `https://mcp.justonce.ai/` |
+| **Claude.ai / Claude Desktop** | Customize → Connectors → *+ Add* → *Add custom connector* → URL `https://mcp.justonce.ai/` (the Free plan allows one custom connector) |
 | **Claude Code** | `claude mcp add --transport http justonce https://mcp.justonce.ai/` |
-| **ChatGPT** | Settings → Connectors → *Create* → URL `https://mcp.justonce.ai/` |
-| **VS Code / GitHub Copilot** | Add the JSON below to `.vscode/mcp.json` (use `"servers"` instead of `"mcpServers"`) |
-| **Any other MCP client** | Streamable HTTP endpoint `https://mcp.justonce.ai/` |
+| **ChatGPT** | On chatgpt.com (web only): Plugins → *+* → *Add custom MCP server* → URL `https://mcp.justonce.ai/`. OpenAI offers this on Pro, Business and Enterprise/Edu; Pro gets read/fetch access only (recall, not saving), and on Business an admin or owner publishes it. |
 
 ```json
 {
@@ -71,7 +69,7 @@ Your personal vault is private and is never shared. A **shared space** is a sepa
 
 - **One space per relationship.** A team space, a space per client or engagement, a space per open-source project. Separate spaces mean separate memberships — no cross-client bleed, no over-sharing.
 - **Three roles, nothing to configure.** Owner, Editor and Viewer.
-- **Works across assistants.** Members connect whichever MCP client they like. When someone asks their assistant a question, `search_memories` also returns hits from the shared spaces they belong to, each carrying a `shared` block that says which space it came from and who shared it — so the assistant attributes it correctly instead of presenting it as the user's own.
+- **Works across assistants.** Each member connects their own Claude, ChatGPT or Cursor. When someone asks their assistant a question, `search_memories` also returns hits from the shared spaces they belong to, each carrying a `shared` block that says which space it came from and who shared it — so the assistant attributes it correctly instead of presenting it as the user's own.
 - **Roles decide who edits.** Owners and Editors can change a shared memory; Viewers can only read it. Remove a memory from a space, or close the space, and it stops being visible to the other members.
 
 Typical uses: a team giving every member's AI the same architecture decisions, conventions and runbooks; a contractor or agency holding a client's stack and preferences in a space that is closed when the engagement ends; a maintainer sharing project context with contributors without exposing anything personal.
