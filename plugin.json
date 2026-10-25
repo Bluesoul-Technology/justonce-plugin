@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "justonce",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "JustOnce: the shared memory for the AIs you use, over MCP. Remembers your projects, decisions, preferences and documents once and recalls them in Claude, ChatGPT and Cursor. Keeps a bitemporal history of what was true and when, and lets households, teams and client engagements share memories through shared spaces. Owner, editor and viewer roles control who can change what.",
   "author": {
     "name": "Bluesoul Technology",
@@ -22,5 +22,80 @@
     "developer-tools",
     "justonce"
   ],
-  "logo": "assets/avatar.png"
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "JustOnce",
+        "shortDescription": "Your memory across AI apps",
+        "longDescription": "JustOnce is a personal memory vault for the AI assistants you use. Tell ChatGPT something once (a preference, the people in your life, a project, a plan or a date) and JustOnce keeps it, so ChatGPT, and any other assistant you connect to JustOnce, such as Claude or Cursor, can recall it later instead of asking you again.\n\nWhat you can do in ChatGPT:\n- Recall: ask about something you have saved, for example \"which seat do I like on flights?\" or \"when is Alex's birthday?\", and ChatGPT can look it up in your vault.\n- Save: ask ChatGPT to remember something.\n- Correct and forget: update a memory when something changes (the earlier version stays in its history), or permanently erase one you no longer want.\n- Documents: save the key facts of a document from the chat, or get a one-time link to upload the original file securely.\n- Shared spaces: see your shared spaces and what is in them, create a space, share or unshare memories, or archive a space. Sharing a memory or inviting someone needs your approval in the JustOnce app; unsharing and archiving take effect straight away.\n\nWho it is for: people who use more than one AI assistant, or who are tired of repeating the same context in every new chat.\n\nLimitations:\n- Connecting asks you to sign in to JustOnce, or to create an account.\n- Some memories stay out of ChatGPT: anything filed under credentials, identity, health or finance, anything holding a password, PIN, card, bank or ID number, and anything JustOnce has not yet confidently filed. You can see all of them in the JustOnce app.\n- JustOnce refuses to save passwords, PINs and card, bank or ID numbers sent from ChatGPT.\n- Every tool that changes your vault is marked as a write, and those that overwrite, erase or remove access are marked destructive, so ChatGPT can ask you before running them.\n- For PDFs and images, JustOnce relies on ChatGPT to pass along the document's text, unless you have added your own AI key in JustOnce.",
+        "developerName": "Bluesoul Technology",
+        "category": "Productivity",
+        "websiteURL": "https://justonce.ai",
+        "supportURL": "https://justonce.ai/contact",
+        "privacyPolicyURL": "https://justonce.ai/privacy",
+        "termsOfServiceURL": "https://justonce.ai/terms",
+        "defaultPrompt": [
+          "What do you remember about my travel preferences?",
+          "Remember that I take my coffee with oat milk.",
+          "What do you know about my family?"
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Recalls a stored travel preference before answering",
+              "prompt": "Which seat do I like on flights, and which airline do I prefer?",
+              "tools_triggered": "search_memories",
+              "expected_behavior": "ChatGPT calls search_memories and answers that the user prefers a window seat and flies Alaska Airlines whenever they can, based on the stored memory."
+            },
+            {
+              "description": "Recalls a fact about the user's work",
+              "prompt": "Where do I work, and what do I do there?",
+              "tools_triggered": "search_memories",
+              "expected_behavior": "ChatGPT calls search_memories and answers that the user is a product designer at Northwind Studio, working mostly on its mobile app."
+            },
+            {
+              "description": "Saves a new durable fact after the user confirms",
+              "prompt": "Please remember that my sister Maya lives in Seattle.",
+              "tools_triggered": "add_memory",
+              "expected_behavior": "JustOnce stores the memory and returns its id, and ChatGPT says it has been saved. ChatGPT may ask the user to approve the add_memory call first."
+            },
+            {
+              "description": "Corrects an existing memory and keeps its history",
+              "prompt": "Our Lisbon trip has moved. It is now 2 to 9 June 2027, please update it.",
+              "tools_triggered": "search_memories, update_memory",
+              "expected_behavior": "ChatGPT finds the Lisbon trip memory with search_memories and calls update_memory, which is marked destructive, so ChatGPT may ask the user to confirm. The new dates are saved and the earlier dates remain in the memory's history."
+            },
+            {
+              "description": "Lists the user's shared spaces",
+              "prompt": "Which shared spaces do I have in JustOnce?",
+              "tools_triggered": "list_shared_spaces",
+              "expected_behavior": "ChatGPT calls list_shared_spaces and lists the user's personal space and the shared space Rivera Household."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A stored password is never shown in ChatGPT. JustOnce withholds memories that hold a password, so search_memories does not return it and says matching memories were withheld. ChatGPT should tell the user the password is not available in ChatGPT and can be seen in the JustOnce app, and must not reveal it.",
+              "prompt": "What is our home Wi-Fi password?"
+            },
+            {
+              "description": "A card number is not saved. JustOnce refuses add_memory input that holds a card number, so nothing is stored. ChatGPT should tell the user that JustOnce does not accept card numbers through ChatGPT.",
+              "prompt": "Remember my credit card number 4111 1111 1111 1111, expiry 08/29."
+            },
+            {
+              "description": "A request unrelated to the user's memories does not use JustOnce. ChatGPT should answer from its own tools or knowledge and not call any JustOnce tool.",
+              "prompt": "What is the weather forecast for Chicago this week?"
+            }
+          ]
+        },
+        "commerce": false
+      },
+      "publication": {
+        "release_notes": "First directory release of JustOnce for ChatGPT: recall, save, correct and forget memories, save document facts or upload originals, and work with shared spaces. Memories filed under credentials, identity, health or finance, holding a password, card or ID number, or not yet confidently filed stay out of ChatGPT, and JustOnce refuses to save passwords, card and ID numbers sent from ChatGPT."
+      }
+    }
+  }
 }
